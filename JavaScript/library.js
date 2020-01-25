@@ -457,10 +457,7 @@ function getSolution(given, searched) {
 }
 
 let givenArr = [new Given(m, 2), new Given(Q, 3), new Given(v, 4)];
-
-let eqtArr = [
-	new AddFormula('W_kin', [W_el, c0]),
-];
+let eqtArr = [new AddFormula('W_kin', [W_el, c0])];
 
 let searched = U;
 
