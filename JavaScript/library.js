@@ -1,6 +1,3 @@
-// TODO: 
-// - one method to get an uknown quantity of a formula
-// - make one Formla object for all formulas
 
 const math = require('mathjs');
 
@@ -199,8 +196,6 @@ class PowFormula {
 	};
 }
 
-let F_el, E_el, l, q, mgs, m, g, s;
-
 {	c0 = new Quantity(
 		'c0',
 		'0',
@@ -260,7 +255,7 @@ let F_el, E_el, l, q, mgs, m, g, s;
 		'Geschwindigkeit',				// name
 		'm/s', 							// unit
 		undefined, 						// value
-		[new DivFormula('v', s, t)], 	// children( aka children)
+		[new DivFormula('v', s, t)], 	// children
 		[new Parent('vv', 0)]			// parents
 	);
 
