@@ -14,7 +14,7 @@ let c0_5 = new Quantity(
     '',
     0.5,
     [],
-    [new Parent('ω', 0)],
+    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
 );
 
 let c1 = new Quantity(
@@ -32,7 +32,7 @@ let c_1 = new Quantity(
     '',
     -1,
     [],
-    [new Parent('F_D', 0)],
+    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
 );
 
 let c2 = new Quantity(
@@ -41,7 +41,7 @@ let c2 = new Quantity(
     '',
     2,
     [],
-    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0)],
+    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0), new Parent('t$p2', 0)],
 );
 
 let cπ = new Quantity(
@@ -104,9 +104,45 @@ let t = new Quantity(
 	's',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0)],
+	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0)],
 );
 
+let t$p2 = new Quantity(
+	't$p2',
+	't²',
+	'',
+	undefined,
+	[new PowFormula('t$p2', t, c2)],
+	[new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+);
+
+let v = new Quantity(
+	'v',
+	'Geschwindigkeit',
+	'm/s',
+	undefined,
+	[],
+	[new Parent('s', 0), new Parent('a', 0), new Parent('v$pc2', 0)],
+);
+
+let a = new Quantity(
+	'a',
+	'Beschleunigung',
+	'm/s²',
+	undefined,
+	[new DivFormula('a', v, t)],
+	[new Parent('F_kin', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+);
+
+let c_1$mc0_5$ma$m$ot$p2$c = new Quantity(
+	'c_1$mc0_5$ma$m$ot$p2$c',
+	'0.5*a*t²',
+	'',
+	undefined,
+	[new MulFormula('c_1$mc0_5$ma$m$ot$p2$c', [c_1, c0_5, a, t$p2])],
+	[new Parent('s', 1)]
+);
+	
 let r = new Quantity(
 	'r',
 	'Radius',
@@ -143,15 +179,24 @@ let m = new Quantity(
 	[new Parent('D$dm', 0), new Parent('F_z', 0), new Parent('F_kin', 0)],
 );
 
-let v = new Quantity(
-	'v',
-	'Geschwindigkeit',
+let v_0 = new Quantity(
+	'v_0',
+	'Anfangsgeschwindigkeit',
 	'm/s',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('v$pc2', 0)],
+	[new Parent('v_0$mt', 0)],
 );
-    
+
+let v_0$mt = new Quantity(
+	'v_0$mt',
+	'v_0*t',
+	'',
+	undefined,
+	[new MulFormula('v_0$mt', [v_0, t])],
+	[new Parent('s', 1)]
+);
+
 let v$pc2 = new Quantity(
     'v$pc2',
     'v²',
@@ -166,17 +211,8 @@ let s = new Quantity(
 	'Strecke',
 	'm',
 	undefined,
-	[new MulFormula('s', [v, t])],
+	[new MulFormula('s', [v, t]), new AddFormula('s', [c_1$mc0_5$ma$m$ot$p2$c, v_0$mt])],
 	[new Parent('c', 0), new Parent('F_D', 0)],
-);
-
-let a = new Quantity(
-	'a',
-	'Beschleunigung',
-	'm/s²',
-	undefined,
-	[new DivFormula('a', v, t)],
-	[new Parent('F_kin', 0)],
 );
 
 let A = new Quantity(
@@ -185,7 +221,7 @@ let A = new Quantity(
 	'm²',
 	undefined,
 	[],
-	[new Parent('A$dd_Kond', 0)],
+	[new Parent('A$dd_Kond', 0), new Parent('σ', 0)],
 );
 
 let d_Kond = new Quantity(
@@ -221,7 +257,16 @@ let Q = new Quantity(
 	'As',
 	undefined,
 	[],
-	[new Parent('I', 0), new Parent('C', 1)],
+	[new Parent('I', 0), new Parent('C', 1), new Parent('σ', 0)],
+);
+
+let σ = new Quantity(
+	'σ',
+	'Flächenladungsdichte',
+	'C/m²',
+	undefined,
+	[new DivFormula('σ', Q, A)],
+	[]
 );
 
 let R = new Quantity(

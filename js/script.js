@@ -28,6 +28,7 @@ function getSolution(given, searched) {
 					let givenParentFormula = givenParents[j].getConnectingFormula();
 					if (eval(givenParentFormula.parentQuantity).value != undefined) { // if the parent is known
 						if (givenParentFormula.unknownSubQuantities() == 1) { // if there is only one unknown subQuantity in the formula
+							console.log(givenParentFormula);
 							let unknownSubQuantity = givenParentFormula.getUnknownSubQuantity();
 							givenParentFormula.calculateAndSetValue(unknownSubQuantity); // calc and set value in quantity
 							givenArr.push(new Given(unknownSubQuantity, unknownSubQuantity.value)); // add new known to givenArr
@@ -51,6 +52,7 @@ function getSolution(given, searched) {
 				for (var j in given[i].quantity.children) { // for each formula of given
 					let givenFormula = given[i].quantity.children[j];
 					if (givenFormula.unknownSubQuantities() == 1) { // if givenFormula has only one unknown subQuantity
+						console.log(givenFormula)
 						let unknownSubQuantity = givenFormula.getUnknownSubQuantity();
 						givenFormula.calculateAndSetValue(unknownSubQuantity); // calc and set value in quantity
 						givenArr.push(new Given(unknownSubQuantity, unknownSubQuantity.value)); // add new known to givenArr
@@ -92,10 +94,10 @@ function getSolution(given, searched) {
 	}
 }
 
-let givenArr = [new Given(U, 2), new Given(R, 3), new Given(t, 4), new Given(n_Perioden, 5)];
+let givenArr = [new Given(a, 2), new Given(t, 3), new Given(v_0, 4)];
 let eqtArr = [];
 
-let searched = T;
+let searched = s;
 
 assignValues(givenArr);
 assignEquations(eqtArr);
