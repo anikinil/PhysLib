@@ -14,7 +14,7 @@ let c0_5 = new Quantity(
     '',
     0.5,
     [],
-    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0), new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('W_el_Kond', 0), new Parent('W_el_Kond', 1)]
 );
 
 let c1 = new Quantity(
@@ -23,7 +23,7 @@ let c1 = new Quantity(
     '',
     1,
     [],
-    [new Parent('cε_0', 0)],
+    [new Parent('cε_0', 0)]
 );
 
 let c_1 = new Quantity(
@@ -32,7 +32,7 @@ let c_1 = new Quantity(
     '',
     -1,
     [],
-    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)]
 );
 
 let c2 = new Quantity(
@@ -41,7 +41,7 @@ let c2 = new Quantity(
     '',
     2,
     [],
-    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0), new Parent('t$p2', 0)],
+    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0), new Parent('t$p2', 0), new Parent('U$pc2', 0), new Parent('c2$mcπ$mr', 0), new Parent('ω$pc2', 0), new Parent('T$pc2', 0), new Parent('cπ$pc2', 0)]
 );
 
 let cπ = new Quantity(
@@ -50,7 +50,25 @@ let cπ = new Quantity(
     '',
     Math.PI,
     [],
-    [new Parent('c2$mcπ', 0), new Parent('ω', 1)],
+    [new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('c2$mcπ$mr', 0), new Parent('cπ$pc2', 0)]
+);
+
+let cπ$pc2 = new Quantity(
+	'cπ$pc2',
+	'π²',
+	'',
+	undefined,
+	[new PowFormula('cπ$pc2', cπ, c2)],
+	[new Parent('m$mc4$mcπ$pc2$mr', 0)]
+);
+
+let c4 = new Quantity(
+	'c4',
+	'4',
+	'',
+	4,
+	[],
+	[new Parent('m$mc4$mcπ$pc2$mr', 0)]
 );
 
 let cc_0 = new Quantity(
@@ -59,8 +77,8 @@ let cc_0 = new Quantity(
     'm/s',
     299792458,
     [],
-    [new Parent('cc_0$pc2', 0)],
-);
+    [new Parent('cc_0$pc2', 0)]
+	);
 
 let cμ_0 = new Quantity(
     'cμ_0',
@@ -68,7 +86,7 @@ let cμ_0 = new Quantity(
     'N/A²',
     0.00000125663706212,
     [],
-    [new Parent('cμ_0$m$occ_0$pc2$c', 0)],
+    [new Parent('cμ_0$m$occ_0$pc2$c', 0)]
 );
 
 let cc_0$pc2 = new Quantity(
@@ -77,7 +95,7 @@ let cc_0$pc2 = new Quantity(
     '',
     89875517873681764n,
     [new PowFormula('cc_0$pc2', cc_0, c2)],
-    [new Parent('cμ_0$m$occ_0$pc2$c', 0)],
+    [new Parent('cμ_0$m$occ_0$pc2$c', 0)]
 );
 
 let cμ_0$m$occ_0$pc2$c = new Quantity(
@@ -86,7 +104,7 @@ let cμ_0$m$occ_0$pc2$c = new Quantity(
     '',
     11294090673729700118077917968n,
     [new MulFormula('cμ_0$m$occ_0$pc2c', [cμ_0, cc_0$pc2])],
-    [new Parent('cε_0', 0)],
+    [new Parent('cε_0', 0)]
 );
 
 let cε_0 = new Quantity(
@@ -95,7 +113,7 @@ let cε_0 = new Quantity(
     'As/Vm',
     0.0000000000088541878128,
     [new DivFormula('cε_0', c1, cμ_0$m$occ_0$pc2$c)],
-    [new Parent('C', 0)],
+    [new Parent('C', 0)]
 );
 
 let t = new Quantity(
@@ -104,7 +122,7 @@ let t = new Quantity(
 	's',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0)],
+	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0), new Parent('W_el', 0)]
 );
 
 let t$p2 = new Quantity(
@@ -113,7 +131,7 @@ let t$p2 = new Quantity(
 	'',
 	undefined,
 	[new PowFormula('t$p2', t, c2)],
-	[new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+	[new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)]
 );
 
 let v = new Quantity(
@@ -122,7 +140,16 @@ let v = new Quantity(
 	'm/s',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('v$pc2', 0)],
+	[new Parent('s', 0), new Parent('a', 0), new Parent('v$pc2', 0), new Parent('p', 0)]
+);
+
+let p = new Quantity(
+	'p',
+	'Impuls',
+	'N*s',
+	undefined,
+	[new MulFormula('p', [m, v])],
+	[]
 );
 
 let a = new Quantity(
@@ -131,7 +158,7 @@ let a = new Quantity(
 	'm/s²',
 	undefined,
 	[new DivFormula('a', v, t)],
-	[new Parent('F_kin', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)],
+	[new Parent('F_kin', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)]
 );
 
 let c_1$mc0_5$ma$m$ot$p2$c = new Quantity(
@@ -149,7 +176,16 @@ let r = new Quantity(
 	'm',
 	undefined,
 	[],
-	[new Parent('v_Bahn', 0), new Parent('F_z', 0)],
+	[new Parent('v_Bahn', 0), new Parent('F_z', 0), new Parent('c2$mcπ$mr', 0), new Parent('F_z', 1), new Parent('F_z', 1), new Parent('m$mc4$mcπ$pc2$mr', 0)]
+);
+
+let c2$mcπ$mr = new Quantity(
+	'c2$mcπ$mr',
+	'2*π*r',
+	'',
+	undefined,
+	[new MulFormula('c2$mcπ$mr', [c2, cπ, r])],
+	[new Parent('v_Bahn', 1)]
 );
 
 let ρ = new Quantity(
@@ -158,7 +194,7 @@ let ρ = new Quantity(
 	'kg/m³',
 	undefined,
 	[],
-	[new Parent('m', 0)],
+	[new Parent('m', 0)]
 );
 
 let V = new Quantity(
@@ -167,7 +203,7 @@ let V = new Quantity(
 	'm³',
 	undefined,
 	[],
-	[new Parent('m', 0)],
+	[new Parent('m', 0)]
 );
 
 let m = new Quantity(
@@ -176,7 +212,16 @@ let m = new Quantity(
 	'kg',
 	undefined,
 	[new MulFormula('m', [ρ, V])],
-	[new Parent('D$dm', 0), new Parent('F_z', 0), new Parent('F_kin', 0)],
+	[new Parent('D$dm', 0), new Parent('F_z', 0), new Parent('F_kin', 0), new Parent('W_pot', 0), new Parent('W_kin', 1), new Parent('p', 0), new Parent('m$mv$pc2', 0), new Parent('F_z', 1), new Parent('m$mc4$mcπ$pc2$mr', 0)]
+);
+
+let m$mc4$mcπ$pc2$mr = new Quantity(
+	'm$mc4$mcπ$pc2$mr',
+	'm*4*π²*r',
+	'',
+	undefined,
+	[new MulFormula('m$mc4$mcπ$pc2$mr', [m, c4, cπ$pc2, r])],
+	[new Parent('F_z', 2)]
 );
 
 let v_0 = new Quantity(
@@ -185,7 +230,7 @@ let v_0 = new Quantity(
 	'm/s',
 	undefined,
 	[],
-	[new Parent('v_0$mt', 0)],
+	[new Parent('v_0$mt', 0)]
 );
 
 let v_0$mt = new Quantity(
@@ -203,7 +248,16 @@ let v$pc2 = new Quantity(
     '',
     undefined,
     [new PowFormula('v$pc2', v, c2)],
-    [new Parent('F_z', 0)],
+    [new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('m$mv$pc2', 0)]
+);
+
+let m$mv$pc2 = new Quantity(
+	'm$mv$pc2',
+	'm*v²',
+	'',
+	undefined,
+	[new MulFormula('m$mv$pc2', [m, v$pc2])],
+	[new Parent('F_z', 0)]
 );
 
 let s = new Quantity(
@@ -212,7 +266,7 @@ let s = new Quantity(
 	'm',
 	undefined,
 	[new MulFormula('s', [v, t]), new AddFormula('s', [c_1$mc0_5$ma$m$ot$p2$c, v_0$mt])],
-	[new Parent('c', 0), new Parent('F_D', 0)],
+	[new Parent('c', 0), new Parent('F_D', 0), new Parent('W_kin', 0)]
 );
 
 let A = new Quantity(
@@ -221,7 +275,7 @@ let A = new Quantity(
 	'm²',
 	undefined,
 	[],
-	[new Parent('A$dd_Kond', 0), new Parent('σ', 0)],
+	[new Parent('A$dd_Kond', 0), new Parent('σ', 0)]
 );
 
 let d_Kond = new Quantity(
@@ -230,7 +284,7 @@ let d_Kond = new Quantity(
 	'm',
 	undefined,
 	[],
-	[new Parent('A$dd_Kond', 0), new Parent('U', 0)],
+	[new Parent('A$dd_Kond', 0), new Parent('U', 0)]
 );
 
 let A$dd_Kond = new Quantity(
@@ -239,7 +293,7 @@ let A$dd_Kond = new Quantity(
 	'',
 	undefined,
 	[new DivFormula('A$dd_Kond', A, d_Kond)],
-	[new Parent('C', 0)],
+	[new Parent('C', 0)]
 );
 
 let ε_r = new Quantity(
@@ -257,7 +311,7 @@ let Q = new Quantity(
 	'As',
 	undefined,
 	[],
-	[new Parent('I', 0), new Parent('C', 1), new Parent('σ', 0)],
+	[new Parent('I', 0), new Parent('C', 1), new Parent('σ', 0), new Parent('W_el_Kond', 0), new Parent('E_el', 0)]
 );
 
 let σ = new Quantity(
@@ -275,7 +329,7 @@ let R = new Quantity(
 	'Ω',
 	undefined,
 	[],
-	[new Parent('U', 1)],
+	[new Parent('U', 1)]
 );
 
 let I = new Quantity(
@@ -284,7 +338,7 @@ let I = new Quantity(
 	'Ω',
 	undefined,
 	[new DivFormula('I', Q, t)],
-	[new Parent('U', 1), new Parent('P', 0)],
+	[new Parent('U', 1), new Parent('P', 0), new Parent('W_el', 0)]
 );
 
 let E_el = new Quantity(
@@ -292,8 +346,8 @@ let E_el = new Quantity(
 	'elektrische Feldstärke',
 	'N/C oder V/m',
 	undefined,
-	[],
-	[new Parent('U', 0)],
+	[new DivFormula('E_el', F_el, Q)],
+	[new Parent('U', 0)]
 );
 
 let U = new Quantity(
@@ -302,7 +356,16 @@ let U = new Quantity(
 	'V',
 	undefined,
 	[new MulFormula('U', [E_el, d_Kond]), new MulFormula('U', [R, I])],
-	[new Parent('C', 1), new Parent('P', 0)],
+	[new Parent('C', 1), new Parent('P', 0), new Parent('W_el', 0), new Parent('W_el_Kond', 0), new Parent('U$pc2', 0)]
+);
+
+let U$pc2 = new Quantity(
+	'U$pc2',
+	'U²',
+	'',
+	undefined,
+	[new PowFormula('U$pc2', U, c2)],
+	[new Parent('W_el_Kond', 1)]
 );
 
 let C = new Quantity(
@@ -311,7 +374,7 @@ let C = new Quantity(
 	'F',
 	undefined,
 	[new MulFormula('C', [cε_0, A$dd_Kond]), new DivFormula('C', Q, U)],
-	[]
+	[new Parent('W_el_Kond', 1)]
 );
 
 let P = new Quantity(
@@ -329,7 +392,16 @@ let T = new Quantity(
 	's',
 	undefined,
 	[],
-	[new Parent('n_Perioden', 0), new Parent('ω', 2)],
+	[new Parent('n_Perioden', 0), new Parent('ω', 2), new Parent('v_Bahn', 1), new Parent('T$pc2', 0)]
+);
+	
+let T$pc2 = new Quantity(
+	'T$pc2',
+	'T²',
+	'',
+	undefined,
+	[new PowFormula('T$pc2', T, c2)],
+	[new Parent('F_z', 2)]
 );
 
 let n_Perioden = new Quantity(
@@ -347,7 +419,7 @@ let λ = new Quantity(
 	'm',
 	undefined,
 	[],
-	[new Parent('f', 0)],
+	[new Parent('f', 0)]
 );
 
 let c = new Quantity(
@@ -356,7 +428,7 @@ let c = new Quantity(
 	'm/s',
 	undefined,
 	[new DivFormula('c', s, t)],
-	[new Parent('f', 0)],
+	[new Parent('f', 0)]
 );
 
 let f = new Quantity(
@@ -365,7 +437,7 @@ let f = new Quantity(
 	'Hz',
 	undefined,
 	[new DivFormula('f', c, λ)],
-	[new Parent('ω', 1)],
+	[new Parent('ω', 1)]
 );
 
 let D = new Quantity(
@@ -374,7 +446,7 @@ let D = new Quantity(
 	'N/m oder kg/s²',
 	undefined,
 	[],
-	[new Parent('D$dm', 0), new Parent('F_D', 0)],
+	[new Parent('D$dm', 0), new Parent('F_D', 0), new Parent('W_spann', 0)]
 );
 
 let D$dm = new Quantity(
@@ -383,7 +455,7 @@ let D$dm = new Quantity(
 	'',
 	undefined,
 	[new DivFormula('D$dm', D, m)],
-	[new Parent('ω', 0)],
+	[new Parent('ω', 0)]
 );
 
 let c2$mcπ = new Quantity(
@@ -392,7 +464,7 @@ let c2$mcπ = new Quantity(
 	'',
 	2 * Math.PI,
 	[new MulFormula('c2$mcπ', [c2, cπ])],
-	[new Parent('ω', 2)],
+	[new Parent('ω', 2)]
 );
 
 let ω = new Quantity(
@@ -401,7 +473,16 @@ let ω = new Quantity(
 	'rad/s',
 	undefined,
 	[new PowFormula('ω', D$dm, c0_5), new MulFormula('ω', [c2, cπ, f]), new DivFormula('ω', c2$mcπ, T)],
-	[new Parent('v_Bahn', 0), new Parent('φ_Phase', 0)],
+	[new Parent('v_Bahn', 0), new Parent('φ_Phase', 0), new Parent('ω$pc2', 0)]
+);
+
+let ω$pc2 = new Quantity(
+	'ω$pc2',
+	'ω²',
+	'',
+	undefined,
+	[new PowFormula('ω$pc2', ω, c2)],
+	[new Parent('F_z', 1)]
 );
 
 let φ_Phase = new Quantity(
@@ -418,8 +499,17 @@ let v_Bahn = new Quantity(
 	'Bahngeschwindigkeit',
 	'm/s',
 	undefined,
-	[new MulFormula('v_Bahn', [ω, r])],
+	[new MulFormula('v_Bahn', [ω, r]), new DivFormula('v_Bahn', c2$mcπ$mr, T)],
 	[]
+);
+
+let F_el = new Quantity(
+	'F_el',
+	'elektrische Kraft',
+	'N',
+	undefined,
+	[],
+	[new Parent('E_el', 0)]
 );
 
 let F_z = new Quantity(
@@ -427,7 +517,7 @@ let F_z = new Quantity(
 	'Zentripetalkraft',
 	'N',
 	undefined,
-	[new MulFormula('F_z', [r, m, v$pc2])],
+	[new DivFormula('F_z', m$mv$pc2, r), new MulFormula('F_z', [m, ω$pc2, r]), new DivFormula('F_z', m$mc4$mcπ$pc2$mr, T$pc2)],
 	[]
 );
 
@@ -437,7 +527,7 @@ let F_kin = new Quantity(
 	'N',
 	undefined,
 	[new MulFormula('F_kin', [m, a])],
-	[]
+	[new Parent('W_kin', 0)]
 );
 
 let F_D = new Quantity(
@@ -446,5 +536,77 @@ let F_D = new Quantity(
 	'N',
 	undefined,
 	[new MulFormula('F_D', [c_1, D, s])],
+	[]
+);
+
+let s_0 = new Quantity(
+	's_0',
+	'Anfangsstrecke',
+	'm',
+	undefined,
+	[],
+	[]
+);
+
+let g = new Quantity(
+	'g',
+	'Ortsfaktor',
+	'm/s²',
+	undefined,
+	[],
+	[new Parent('W_pot', 0)]
+);
+
+let h = new Quantity(
+	'h',
+	'Höhe',
+	'm',
+	undefined,
+	[],
+	[new Parent('W_pot', 0)]
+);
+
+let W_pot = new Quantity(
+	'W_pot',
+	'potentielle Energie',
+	'J',
+	undefined,
+	[new MulFormula('W_pot', [m, g, h])],
+	[]
+);
+
+let W_kin = new Quantity(
+	'W_kin',
+	'kinetische Energie',
+	'J',
+	undefined,
+	[new MulFormula('W_kin', [F_kin, s]), new MulFormula('W_kin', [c0_5, m, v$pc2])],
+	[]
+);
+
+let W_spann = new Quantity(
+	'W_spann',
+	'Spannenergie',
+	'J',
+	undefined,
+	[new MulFormula('W_spann', [c0_5, D, v$pc2])],
+	[]
+);
+
+let W_el = new Quantity(
+	'W_el',
+	'elektrische Energie',
+	'J',
+	undefined,
+	[new MulFormula('W_el', [U, I, t])],
+	[]
+);
+
+let W_el_Kond = new Quantity(
+	'W_el_Kond',
+	'elektrische Energie im Kondensator',
+	'J',
+	undefined,
+	[new MulFormula('W_el_Kond', [c0_5, Q, U]), new MulFormula('W_el_Kond', [c0_5, C, U$pc2])],
 	[]
 );
