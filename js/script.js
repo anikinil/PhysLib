@@ -18,7 +18,6 @@ function assignEquations(equations) {
 	}
 }
 
-
 function getSolution(given, searched) {
 	for (i = 0; i < given.length; i++) { // for each given
 		if (given[i].value !== undefined) { // if given is defined
