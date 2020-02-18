@@ -92,10 +92,10 @@ function getSolution(given, searched) {
 	}
 }
 
-let givenArr = [new Given(C, 0.6)];
+let givenArr = [new Given(C, 0.6), new Given(A, 1.1)];
 let eqtArr = [];
 
-let searched = A;
+let searched = B;
 
 assignValues(givenArr);
 assignEquations(eqtArr);
