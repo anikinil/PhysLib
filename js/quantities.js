@@ -14,7 +14,7 @@ let c0_5 = new Quantity(
     '',
     0.5,
     [],
-    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0), new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('W_el_Kond', 0), new Parent('W_el_Kond', 1), new Parent('F_W', 0), new Parent('ρ_el', 1)]
+    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0), new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('W_el_Kond', 0), new Parent('W_el_Kond', 1), new Parent('F_W', 0), new Parent('ρ_el', 1), new Parent('W_m', 0)]
 );
 
 let c1 = new Quantity(
@@ -32,7 +32,7 @@ let c_1 = new Quantity(
     '',
     -1,
     [],
-    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0)]
+    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$ot$p2$c', 0), new Parent('c_1$mR$mt', 0)]
 );
 
 let c2 = new Quantity(
@@ -41,7 +41,16 @@ let c2 = new Quantity(
     '',
     2,
     [],
-    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0), new Parent('t$p2', 0), new Parent('U$pc2', 0), new Parent('c2$mcπ$mr', 0), new Parent('ω$pc2', 0), new Parent('T$pc2', 0), new Parent('cπ$pc2', 0), new Parent('E_el$pc2', 0), new Parent('n_Windungen$pc2', 0)]
+    [new Parent('cc_0$pc2', 0), new Parent('c2$mcπ', 0), new Parent('ω', 1), new Parent('v$pc2', 0), new Parent('t$p2', 0), new Parent('U$pc2', 0), new Parent('c2$mcπ$mr', 0), new Parent('ω$pc2', 0), new Parent('T$pc2', 0), new Parent('cπ$pc2', 0), new Parent('E_el$pc2', 0), new Parent('n_Windungen$pc2', 0), new Parent('I$pc2', 0), new Parent('c2$mcμ_0$mμ_r', 0), new Parent('B$pc2', 0)]
+);
+
+let ce = new Quantity(
+	'ce',
+	'e',
+	'',
+	Math.E,
+	[],
+	[]
 );
 
 let cπ = new Quantity(
@@ -95,7 +104,7 @@ let cμ_0 = new Quantity(
     'N/A²',
     0.00000125663706212,
     [],
-    [new Parent('cμ_0$m$occ_0$pc2$c', 0), new Parent('B', 0), new Parent('μ_r', 0)]
+    [new Parent('cμ_0$m$occ_0$pc2$c', 0), new Parent('B', 0), new Parent('μ_r', 0), new Parent('L', 0), new Parent('c2$mcμ_0$mμ_r', 0)]
 );
 
 let cc_0$pc2 = new Quantity(
@@ -131,7 +140,7 @@ let t = new Quantity(
 	's',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0), new Parent('W_el', 0), new Parent('W_el', 1), new Parent('v_D', 0)]
+	[new Parent('s', 0), new Parent('a', 0), new Parent('I', 0), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0), new Parent('W_el', 0), new Parent('W_el', 1), new Parent('v_D', 0), new Parent('c_1$mR$mt', 0)]
 );
 
 let t$p2 = new Quantity(
@@ -203,7 +212,7 @@ let V = new Quantity(
 	'm³',
 	undefined,
 	[],
-	[new Parent('m', 0), new Parent('ρ_el', 0)]
+	[new Parent('m', 0), new Parent('ρ_el', 0), new Parent('ρ_m', 0)]
 );
 
 let m = new Quantity(
@@ -278,13 +287,22 @@ let s = new Quantity(
 	[new Parent('c', 0), new Parent('F_D', 0), new Parent('W_kin', 0), new Parent('v_D', 0)]
 );
 
+let s_0 = new Quantity(
+	's_0',
+	'Anfangsstrecke',
+	'm',
+	undefined,
+	[],
+	[]
+);
+
 let v_D = new Quantity(
 	'v_D',
 	'Driftgeschwindigkeit',
 	'm/s',
 	undefined,
 	[new DivFormula('v_D', s, t)],
-	[new Parent('F_L', 0)]
+	[new Parent('F_L', 0), new Parent('U_H', 0), new Parent('U_ind', 0)]
 );
 
 let s_Leiter = new Quantity(
@@ -302,7 +320,7 @@ let A = new Quantity(
 	'm²',
 	undefined,
 	[],
-	[new Parent('A$dd_Kond', 0), new Parent('σ', 0), new Parent('F_W', 0)]
+	[new Parent('A$dd_Kond', 0), new Parent('σ', 0), new Parent('F_W', 0), new Parent('φ', 0), new Parent('A$dl_Spule', 0)]
 );
 
 let c_W = new Quantity(
@@ -365,7 +383,7 @@ let R = new Quantity(
 	'Ω',
 	undefined,
 	[],
-	[new Parent('U', 1)]
+	[new Parent('U', 1), new Parent('c_1$mR$mt', 0)]
 );
 
 let I = new Quantity(
@@ -374,7 +392,7 @@ let I = new Quantity(
 	'Ω',
 	undefined,
 	[new DivFormula('I', Q, t)],
-	[new Parent('U', 1), new Parent('P', 0), new Parent('W_el', 0), new Parent('H', 0), new Parent('B', 0), new Parent('F_L', 1)]
+	[new Parent('U', 1), new Parent('P', 0), new Parent('W_el', 0), new Parent('H', 0), new Parent('B', 0), new Parent('F_L', 1), new Parent('I$pc2', 0)]
 );
 
 let H = new Quantity(
@@ -428,7 +446,7 @@ let n_Windungen$pc2 = new Quantity(
 	'',
 	undefined,
 	[new PowFormula('n_Windungen$pc2', n_Windungen, c2)],
-	[]
+	[new Parent('L', 0)]
 );
 
 let l_Spule = new Quantity(
@@ -437,7 +455,7 @@ let l_Spule = new Quantity(
 	'm',
 	undefined,
 	[],
-	[new Parent('n_Windungen$dl_Spule', 0)]
+	[new Parent('n_Windungen$dl_Spule', 0), new Parent('A$dl_Spule', 0)]
 );
 
 let n_Windungen$dl_Spule = new Quantity(
@@ -454,8 +472,35 @@ let B = new Quantity(
 	'magnetische Flussdichte',
 	'T',
 	undefined,
-	[new MulFormula('B', [cμ_0, I, n_Windungen$dl_Spule])],
-	[new Parent('μ', 0), new Parent('F_L', 0), new Parent('F_L', 1)]
+	[new MulFormula('B', [cμ_0, μ_r, I, n_Windungen$dl_Spule])],
+	[new Parent('μ', 0), new Parent('F_L', 0), new Parent('F_L', 1), new Parent('U_H', 0), new Parent('U_ind', 0), new Parent('φ', 0), new Parent('B$pc2', 0)]
+);
+
+let φ = new Quantity(
+	'φ',
+	'magnetischer Fluss',
+	'Wb',
+	undefined,
+	[new MulFormula('φ', [B, A])],
+	[]
+);
+
+let d_Leiter = new Quantity(
+	'd_Leiter',
+	'Breite des Leiterstückes',
+	'm',
+	undefined,
+	[],
+	[new Parent('U_H', 0), new Parent('U_ind', 0)]
+);
+
+let U_H = new Quantity(
+	'U_H',
+	'Hallspannung',
+	'V',
+	undefined,
+	[new MulFormula('U_H', [v_D, B, d_Leiter])],
+	[]
 );
 
 let F_L = new Quantity(
@@ -482,7 +527,7 @@ let μ_r = new Quantity(
 	'Vs/Am',
 	undefined,
 	[new DivFormula('μ_r', μ, cμ_0)],
-	[]
+	[new Parent('B', 0), new Parent('L', 0), new Parent('c2$mcμ_0$mμ_r', 0)]
 );
 
 let λ = new Quantity(
@@ -665,15 +710,6 @@ let F_D = new Quantity(
 	[]
 );
 
-let s_0 = new Quantity(
-	's_0',
-	'Anfangsstrecke',
-	'm',
-	undefined,
-	[],
-	[]
-);
-
 let g = new Quantity(
 	'g',
 	'Ortsfaktor',
@@ -753,4 +789,76 @@ let W_el_Kond = new Quantity(
 	undefined,
 	[new MulFormula('W_el_Kond', [c0_5, Q, U]), new MulFormula('W_el_Kond', [c0_5, C, U$pc2])],
 	[]
+);
+
+let U_ind = new Quantity(
+	'U_ind',
+	'Induktionsspannung',
+	'V',
+	undefined,
+	[new MulFormula('U_ind', [B, d_Leiter, v_D])],
+	[]
+);
+
+let A$dl_Spule = new Quantity(
+	'A$dl_Spule',
+	'A/l_Spule',
+	'',
+	undefined,
+	[new DivFormula('A$dl_Spule', A, l_Spule)],
+	[new Parent('L', 0)]
+);
+
+let L = new Quantity(
+	'L',
+	'Induktivität',
+	'H',
+	undefined,
+	[new MulFormula('L', [cμ_0, μ_r, n_Windungen$pc2, A$dl_Spule])],
+	[new Parent('W_m', 0), new Parent('$oc_1$mR$mt$$c$dL', 0)]
+);
+
+let I$pc2 = new Quantity(
+	'I$pc2',
+	'I²',
+	'',
+	undefined,
+	[new PowFormula('I$pc2', I, c2)],
+	[new Parent('W_m', 0)]
+);
+
+let W_m = new Quantity(
+	'W_m',
+	'magnetische Feldenergie der Spule',
+	'J',
+	undefined,
+	[new MulFormula('W_m', [c0_5, L, I$pc2])],
+	[new Parent('ρ_m', 0)]
+);
+
+let ρ_m = new Quantity(
+	'ρ_m',
+	'magnetische Energiedichte',
+	'J/m³',
+	undefined,
+	[new DivFormula('ρ_m', W_m, V), new DivFormula('ρ_m', B$pc2, c2$mcμ_0$mμ_r)],
+	[]
+);
+
+let c2$mcμ_0$mμ_r = new Quantity(
+	'c2$mcμ_0$mμ_r',
+	'2*μ_0*μ_r',
+	'',
+	undefined,
+	[new MulFormula('c2$mcμ_0$mμ_r', [c2, cμ_0, μ_r])],
+	[new Parent('ρ_m', 1)]
+);
+
+let B$pc2 = new Quantity(
+	'B$pc2',
+	'B²',
+	'',
+	undefined,
+	[new PowFormula('B$pc2', B, c2)],
+	[new Parent('ρ_m', 1)]
 );
