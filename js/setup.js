@@ -204,10 +204,9 @@ class SinFormula {
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
-			unknownQuantity.value = Math.sin(this.input.value);
+			unknownQuantity.value = Math.sin(this.input.value * (Math.PI / 180));
 		} else if (unknownQuantity == this.input) {
-			console.log(this.parentQuantity.symbol)
-			unknownQuantity.value = Math.asin(eval(this.parentQuantity).value);
+			unknownQuantity.value = Math.asin(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
 			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der SinFormula von ' + this.parentQuantity + ' vorhanden.');
 		}
@@ -232,9 +231,9 @@ class CosFormula {
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
-			unknownQuantity.value = Math.cos(this.input.value);
+			unknownQuantity.value = Math.cos(this.input.value * (Math.PI / 180));
 		} else if (unknownQuantity == this.input) {
-			unknownQuantity.value = Math.acos(eval(this.parentQuantity).value);
+			unknownQuantity.value = Math.acos(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
 			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der CosFormula von ' + this.parentQuantity + ' vorhanden.');
 		}
@@ -259,9 +258,9 @@ class TanFormula {
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
-			unknownQuantity.value = Math.tan(this.input.value);
+			unknownQuantity.value = Math.tan(this.input.value * (Math.PI / 180));
 		} else if (unknownQuantity == this.input) {
-			unknownQuantity.value = Math.atan(eval(this.parentQuantity).value);
+			unknownQuantity.value = Math.atan(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
 			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der TanFormula von ' + this.parentQuantity + ' vorhanden.');
 		}

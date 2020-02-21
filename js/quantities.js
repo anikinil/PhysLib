@@ -14,7 +14,7 @@ let c0_5 = new Quantity(
     '',
     0.5,
     [],
-    [new Parent('ω', 0), new Parent('c_1$mc0_5$ma$m$bot$p2$bc', 0), new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('W_el_Kond', 0), new Parent('W_el_Kond', 1), new Parent('F_W', 0), new Parent('ρ_el', 1), new Parent('W_m', 0), new Parent('c2$pc0_5', 0)]
+    [new Parent('ω', 0), new Parent('c__1$mc0_5$ma$m$bot$p2$bc', 0), new Parent('W_kin', 1), new Parent('W_spann', 0), new Parent('W_el_Kond', 0), new Parent('W_el_Kond', 1), new Parent('F_W', 0), new Parent('ρ_el', 1), new Parent('W_m', 0), new Parent('c2$pc0_5', 0), new Parent('k$ac0_5', 0)]
 );
 
 let c_0_5 = new Quantity(
@@ -35,13 +35,13 @@ let c1 = new Quantity(
     [new Parent('cε_0', 0)]
 );
 
-let c_1 = new Quantity(
-    'c_1',
+let c__1 = new Quantity(
+    'c__1',
     '-1',
     '',
     -1,
     [],
-    [new Parent('F_D', 0), new Parent('c_1$mc0_5$ma$m$bot$p2$bc', 0), new Parent('c_1$m$bos$dc$bc', 0), new Parent('c2$mk$ac_1', 0)]
+    [new Parent('F_D', 0), new Parent('c__1$mc0_5$ma$m$bot$p2$bc', 0), new Parent('c__1$m$bos$dc$bc', 0), new Parent('c2$mk$ac__1', 0)]
 );
 
 let c2 = new Quantity(
@@ -149,7 +149,7 @@ let t = new Quantity(
 	's',
 	undefined,
 	[],
-	[new Parent('s', 0), new Parent('a', 0), new Parent('Q', 1), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0), new Parent('W_el', 0), new Parent('W_el', 1), new Parent('v_D', 0), new Parent('ω$mt', 0), new Parent('t$a$boc_1$m$bos$dc$bc$bc', 0)]
+	[new Parent('s', 0), new Parent('a', 0), new Parent('Q', 1), new Parent('n_Perioden', 0), new Parent('c', 0), new Parent('φ_Phase', 0), new Parent('t$p2', 0), new Parent('v_0$mt', 0), new Parent('W_el', 0), new Parent('W_el', 1), new Parent('v_D', 0), new Parent('ω$mt', 0), new Parent('t$a$boc__1$m$bos$dc$bc$bc', 0)]
 );
 
 let t$p2 = new Quantity(
@@ -158,7 +158,7 @@ let t$p2 = new Quantity(
 	'',
 	undefined,
 	[new PowFormula('t$p2', t, c2)],
-	[new Parent('c_1$mc0_5$ma$m$bot$p2$bc', 0)]
+	[new Parent('c__1$mc0_5$ma$m$bot$p2$bc', 0)]
 );
 
 let v = new Quantity(
@@ -176,15 +176,15 @@ let a = new Quantity(
 	'm/s²',
 	undefined,
 	[new DivFormula('a', v, t)],
-	[new Parent('F_kin', 0), new Parent('c_1$mc0_5$ma$m$bot$p2$bc', 0)]
+	[new Parent('F_kin', 0), new Parent('c__1$mc0_5$ma$m$bot$p2$bc', 0)]
 );
 
-let c_1$mc0_5$ma$m$bot$p2$bc = new Quantity(
-	'c_1$mc0_5$ma$m$bot$p2$bc',
+let c__1$mc0_5$ma$m$bot$p2$bc = new Quantity(
+	'c__1$mc0_5$ma$m$bot$p2$bc',
 	'-0.5*a*t²',
 	'',
 	undefined,
-	[new MulFormula('c_1$mc0_5$ma$m$bot$p2$bc', [c_1, c0_5, a, t$p2])],
+	[new MulFormula('c__1$mc0_5$ma$m$bot$p2$bc', [c__1, c0_5, a, t$p2])],
 	[new Parent('s', 1)]
 );
 	
@@ -221,7 +221,7 @@ let V = new Quantity(
 	'm³',
 	undefined,
 	[],
-	[new Parent('m', 0), new Parent('ρ_el', 0), new Parent('ρ_m', 0)]
+	[new Parent('m', 0), new Parent('W_el', 0), new Parent('ρ_m', 0)]
 );
 
 let m = new Quantity(
@@ -292,7 +292,7 @@ let s = new Quantity(
 	'Strecke',
 	'm',
 	undefined,
-	[new MulFormula('s', [v, t]), new AddFormula('s', [c_1$mc0_5$ma$m$bot$p2$bc, v_0$mt])],
+	[new MulFormula('s', [v, t]), new AddFormula('s', [c__1$mc0_5$ma$m$bot$p2$bc, v_0$mt])],
 	[new Parent('c', 0), new Parent('F_D', 0), new Parent('W_kin', 0), new Parent('v_D', 0), new Parent('s$dc', 0)]
 );
 
@@ -338,7 +338,7 @@ let A = new Quantity(
 	'm²',
 	undefined,
 	[],
-	[new Parent('A$dd_Kond', 0), new Parent('σ', 0), new Parent('F_W', 0), new Parent('φ', 0), new Parent('A$dl_Spule', 0)]
+	[new Parent('A$dd_Kond', 0), new Parent('σ', 0), new Parent('F_W', 0), new Parent('φ', 0), new Parent('A$dl_Spule', 0), new Parent('P', 1)]
 );
 
 let c_W = new Quantity(
@@ -437,7 +437,7 @@ let λ = new Quantity(
 	'm',
 	undefined,
 	[],
-	[new Parent('f', 0), new Parent('k', 0), new Parent('λ$dc2', 0), new Parent('λ$dc4', 0)]
+	[new Parent('f', 0), new Parent('k', 0), new Parent('λ$dc2', 0), new Parent('λ$dc4', 0), new Parent('k$mλ', 0), new Parent('λ$dn_Spalten', 0), new Parent('$bok$ac0_5$bc$mλ', 0)]
 );
 
 let μ = new Quantity(
@@ -473,7 +473,7 @@ let c = new Quantity(
 	'm/s',
 	undefined,
 	[new DivFormula('c', s, t), new PowFormula('c', cε_0$mε_r$mcμ_0$mμ_r, c_0_5)],
-	[new Parent('f', 0), new Parent('s$dc', 0)]
+	[new Parent('f', 0), new Parent('s$dc', 0), new Parent('S', 0)]
 );
 
 let s$dc = new Quantity(
@@ -482,33 +482,33 @@ let s$dc = new Quantity(
 	'',
 	undefined,
 	[new DivFormula('s$dc', s, c)],
-	[new Parent('c_1$m$bos$dc$bc', 0)]
+	[new Parent('c__1$m$bos$dc$bc', 0)]
 );
 
-let c_1$m$bos$dc$bc = new Quantity(
-	'c_1$m$bos$dc$bc',
+let c__1$m$bos$dc$bc = new Quantity(
+	'c__1$m$bos$dc$bc',
 	'-(s/c)',
 	'',
 	undefined,
-	[new MulFormula('c_1$m$bos$dc$bc', [c_1, s$dc])],
-	[new Parent('t$a$boc_1$m$bos$dc$bc$bc', 0)]
+	[new MulFormula('c__1$m$bos$dc$bc', [c__1, s$dc])],
+	[new Parent('t$a$boc__1$m$bos$dc$bc$bc', 0)]
 );
 
-let t$a$boc_1$m$bos$dc$bc$bc = new Quantity(
-	't$a$boc_1$m$bos$dc$bc$bc',
+let t$a$boc__1$m$bos$dc$bc$bc = new Quantity(
+	't$a$boc__1$m$bos$dc$bc$bc',
 	't-(s/c)',
 	'',
 	undefined,
-	[new AddFormula('t$a$boc_1$m$bos$dc$bc$bc', [t, c_1$m$bos$dc$bc])],
-	[new Parent('$s$bot$a$boc_1$m$bos$dc$bc$bc$bc', 0)]
+	[new AddFormula('t$a$boc__1$m$bos$dc$bc$bc', [t, c__1$m$bos$dc$bc])],
+	[new Parent('$s$bot$a$boc__1$m$bos$dc$bc$bc$bc', 0)]
 );
 
-let $s$bot$a$boc_1$m$bos$dc$bc$bc$bc = new Quantity(
-	'$s$bot$a$boc_1$m$bos$dc$bc$bc$bc',
+let $s$bot$a$boc__1$m$bos$dc$bc$bc$bc = new Quantity(
+	'$s$bot$a$boc__1$m$bos$dc$bc$bc$bc',
 	'sin(t-(s/c))',
 	'',
 	undefined,
-	[new SinFormula('$s$bot$a$boc_1$m$bos$dc$bc$bc$bc', t$a$boc_1$m$bos$dc$bc$bc)],
+	[new SinFormula('$s$bot$a$boc__1$m$bos$dc$bc$bc$bc', t$a$boc__1$m$bos$dc$bc$bc)],
 	[new Parent('x', 0)]
 );
 
@@ -616,7 +616,7 @@ let x = new Quantity(
 	'Auslenkung',
 	'm',
 	undefined,
-	[new MulFormula('x', [x_max, $s$bot$a$boc_1$m$bos$dc$bc$bc$bc, ω])],
+	[new MulFormula('x', [x_max, $s$bot$a$boc__1$m$bos$dc$bc$bc$bc, ω])],
 	[]
 );
 
@@ -854,15 +854,6 @@ let U$pc2 = new Quantity(
 	[new Parent('W_el_Kond', 1)]
 );
 
-let P = new Quantity(
-	'P',
-	'Leistung',
-	'W',
-	undefined,
-	[new MulFormula('P', [U, I])],
-	[new Parent('W_el', 1)]
-);
-
 let σ = new Quantity(
 	'σ',
 	'Flächenladungsdichte',
@@ -895,7 +886,7 @@ let F_D = new Quantity(
 	'Federkraft',
 	'N',
 	undefined,
-	[new MulFormula('F_D', [c_1, D, s])],
+	[new MulFormula('F_D', [c__1, D, s])],
 	[]
 );
 
@@ -944,15 +935,6 @@ let W_spann = new Quantity(
 	[]
 );
 
-let W_el = new Quantity(
-	'W_el',
-	'elektrische Energie',
-	'J',
-	undefined,
-	[new MulFormula('W_el', [U, I, t]), new MulFormula('W_el', [P, t])],
-	[new Parent('ρ_el', 0)]
-);
-
 let E_el$pc2 = new Quantity(
 	'E_el$pc2',
 	'E_el²',
@@ -962,21 +944,48 @@ let E_el$pc2 = new Quantity(
 	[new Parent('ρ_el', 1)]
 );
 
-let ρ_el = new Quantity(
-	'ρ_el',
-	'elektrische Energiedichte',
-	'J/m³',
-	undefined,
-	[new DivFormula('ρ_el', W_el, V), new MulFormula('ρ_el', [c0_5, cε_0, ε_r, E_el$pc2])],
-	[]
-);
-
 let W_el_Kond = new Quantity(
 	'W_el_Kond',
 	'elektrische Energie im Kondensator',
 	'J',
 	undefined,
 	[new MulFormula('W_el_Kond', [c0_5, Q, U]), new MulFormula('W_el_Kond', [c0_5, C, U$pc2])],
+	[]
+);
+
+let ρ_el = new Quantity(
+	'ρ_el',
+	'elektrische Energiedichte',
+	'J/m³',
+	undefined,
+	[new MulFormula('ρ_el', [c0_5, cε_0, ε_r, E_el$pc2])],
+	[new Parent('W_el', 0), new Parent('S', 0)]
+);
+
+let S = new Quantity(
+	'S',
+	'Bestrahlungsstärke',
+	'W/m²',
+	undefined,
+	[new MulFormula('S', [ρ_el, c])],
+	[new Parent('P', 1)]
+);
+
+let P = new Quantity(
+	'P',
+	'Leistung',
+	'W',
+	undefined,
+	[new MulFormula('P', [U, I]), new MulFormula('P', [S, A])],
+	[new Parent('W_el', 1)]
+);
+
+let W_el = new Quantity(
+	'W_el',
+	'elektrische Energie',
+	'J',
+	undefined,
+	[new MulFormula('W_el', [ρ_el, V]), new MulFormula('W_el', [U, I, t]), new MulFormula('W_el', [P, t])],
 	[]
 );
 
@@ -1022,7 +1031,7 @@ let k = new Quantity(
 	'',
 	undefined,
 	[new DivFormula('k', c2$mcπ, λ)],
-	[new Parent('l_Wellenträger_1', 0), new Parent('c2$mk', 0)]
+	[new Parent('l_Wellenträger_1', 0), new Parent('c2$mk', 0), new Parent('k$mλ', 0), new Parent('k$ac0_5', 0)]
 );
 
 let λ$dc2 = new Quantity(
@@ -1049,15 +1058,15 @@ let c2$mk = new Quantity(
 	'',
 	undefined,
 	[new MulFormula('c2$mk', [c2, k])],
-	[new Parent('c2$mk$ac_1', 0)]
+	[new Parent('c2$mk$ac__1', 0)]
 );
 
-let c2$mk$ac_1 = new Quantity(
-	'c2$mk$ac_1',
+let c2$mk$ac__1 = new Quantity(
+	'c2$mk$ac__1',
 	'2*k-1',
 	'',
 	undefined,
-	[new AddFormula('c2$mk$ac_1', [c2$mk, c_1])],
+	[new AddFormula('c2$mk$ac__1', [c2$mk, c__1])],
 	[new Parent('l_Wellenträger_2', 0)]
 );
 
@@ -1075,6 +1084,222 @@ let l_Wellenträger_2 = new Quantity(
 	'Länge des Wellenträgers (ein Ende frei, ein Ende fest)',
 	'm',
 	undefined,
-	[new MulFormula('l_Wellenträger_2', [c2$mk$ac_1, λ$dc4])],
+	[new MulFormula('l_Wellenträger_2', [c2$mk$ac__1, λ$dc4])],
+	[]
+);
+
+let c_1 = new Quantity(
+	'c_1',
+	'Ausbreitungsgeschwindigkeit im dünneren Medium',
+	'm/s',
+	undefined,
+	[],
+	[new Parent('$sα_2$mc_1', 0)]
+);
+
+let c_2 = new Quantity(
+	'c_2',
+	'Ausbreitungsgeschwindigkeit im dichteren Medium',
+	'm/s',
+	undefined,
+	[],
+	[new Parent('$sα_2$mc_1', 1)]
+);
+
+let α_1 = new Quantity(
+	'α_1',
+	'Brechungswinkel im dünneren Medium',
+	'°',
+	undefined,
+	[],
+	[new Parent('$sα_1', 0)]
+);
+
+let α_2 = new Quantity(
+	'α_2',
+	'Brechungswinkel im dichteren Medium',
+	'°',
+	undefined,
+	[],
+	[new Parent('$sα_2', 0)]
+);
+
+let $sα_1 = new Quantity(
+	'$sα_1',
+	'sin(α_1)',
+	'',
+	undefined,
+	[new SinFormula('$sα_1', α_1)],
+	[new Parent('$sα_2$mc_1', 1)]
+);
+
+let $sα_2 = new Quantity(
+	'$sα_2',
+	'sin(α_2)',
+	'',
+	undefined,
+	[new SinFormula('$sα_2', α_2)],
+	[new Parent('$sα_2$mc_1', 0)]
+);
+
+let $sα_2$mc_1 = new Quantity(
+	'$sα_2$mc_1',
+	'sin(α_2)*c_1',
+	'',
+	undefined,
+	[new MulFormula('$sα_2$mc_1', [$sα_2, c_1]), new MulFormula('$sα_2$mc_1', [$sα_1, c_2])],
+	[]
+);
+
+let ϑ = new Quantity(
+	'ϑ',
+	'Austrittswinkel beim Spalt',
+	'°',
+	undefined,
+	[],
+	[new Parent('$sϑ', 0), new Parent('$tϑ', 0)]
+);
+
+let $sϑ = new Quantity(
+	'$sϑ',
+	'sin(ϑ)',
+	'',
+	undefined,
+	[new SinFormula('$sϑ', ϑ)],
+	[new Parent('δ', 0), new Parent('k$mλ', 1), new Parent('δ', 2)]
+);
+
+let $tϑ = new Quantity(
+	'$tϑ',
+	'tan(ϑ)',
+	'',
+	undefined,
+	[new TanFormula('$tϑ', ϑ)],
+	[new Parent('d_Maxima', 0)]
+);
+
+let g_Spalt = new Quantity(
+	'g_Spalt',
+	'Spaltmittenabstand',
+	'm',
+	undefined,
+	[],
+	[new Parent('δ', 0), new Parent('k$mλ', 1)]
+);
+
+let ϑ_Min_Einzelspalt = new Quantity(
+	'ϑ_Min_Einzelspalt',
+	'Winkel des k-ten Minimums beim Einzelspalt',
+	'°',
+	undefined,
+	[],
+	[new Parent('$sϑ_Min_Einzelspalt', 0)]
+);
+
+let $sϑ_Min_Einzelspalt = new Quantity(
+	'$sϑ_Min_Einzelspalt',
+	'sin(ϑ_Min_Einzelspalt)',
+	'',
+	undefined,
+	[new SinFormula('$sϑ_Min_Einzelspalt', ϑ_Min_Einzelspalt)],
+	[new Parent('k$mλ', 2)]
+);
+
+let b_Einzelspalt = new Quantity(
+	'b_Einzelspalt',
+	'Breite des Einzelspalts',
+	'm',
+	undefined,
+	[],
+	[new Parent('δ', 2), new Parent('k$mλ', 2), new Parent('$bok$ac0_5$bc$mλ', 1)]
+);
+
+let k$mλ = new Quantity(
+	'k$mλ',
+	'k*λ',
+	'',
+	undefined,
+	[new MulFormula('k$mλ', [k, λ]), new MulFormula('k$mλ', [$sϑ, g_Spalt]), new MulFormula('k$mλ', [$sϑ_Min_Einzelspalt, b_Einzelspalt])],
+	[new Parent('δ', 1)]
+);
+
+let n_Spalten = new Quantity(
+	'n_Spalten',
+	'Spaltenzahl beim Gitter',
+	'',
+	undefined,
+	[],
+	[new Parent('λ$dn_Spalten', 0)]
+);
+
+let λ$dn_Spalten = new Quantity(
+	'λ$dn_Spalten',
+	'λ/n_Spalten',
+	'',
+	undefined,
+	[new DivFormula('λ$dn_Spalten', λ, n_Spalten)],
+	[new Parent('δ', 1)]
+);
+
+let δ = new Quantity(
+	'δ',
+	'Gangunterschied',
+	'm',
+	undefined,
+	[new MulFormula('δ', [$sϑ, g_Spalt]), new AddFormula('δ', [k$mλ, λ$dn_Spalten]), new MulFormula('δ', [$sϑ, b_Einzelspalt])],
+	[]
+);
+
+let a_Bild = new Quantity(
+	'a_Bild',
+	'Abstand der Abbildung zur Blende',
+	'm',
+	undefined,
+	[],
+	[new Parent('d_Maxima', 0)]
+);
+
+let d_Maxima = new Quantity(
+	'd_Maxima',
+	'Abstand zweier Maxima',
+	'm',
+	undefined,
+	[new MulFormula('d_Maxima', [$tϑ, a_Bild])],
+	[]
+);
+
+let ϑ_Max_Einzelspalt = new Quantity(
+	'ϑ_Max_Einzelspalt',
+	'Winkel des k-ten Maximums beim Einzelspalt',
+	'°',
+	undefined,
+	[],
+	[new Parent('$sϑ_Max_Einzelspalt', 0)]
+);
+
+let $sϑ_Max_Einzelspalt = new Quantity(
+	'$sϑ_Max_Einzelspalt',
+	'sin(ϑ_Max_Einzelspalt)',
+	'',
+	undefined,
+	[new SinFormula('$sϑ_Max_Einzelspalt', ϑ_Max_Einzelspalt)],
+	[new Parent('$bok$ac0_5$bc$mλ', 1)]
+);
+
+let k$ac0_5 = new Quantity(
+	'k$ac0_5',
+	'k+0.5',
+	'',
+	undefined,
+	[new AddFormula('k$ac0_5', [k, c0_5])],
+	[new Parent('$bok$ac0_5$bc$mλ', 0)]
+);
+
+let $bok$ac0_5$bc$mλ = new Quantity(
+	'$bok$ac0_5$bc$mλ',
+	'(k+0.5)*λ',
+	'',
+	undefined,
+	[new MulFormula('$bok$ac0_5$bc$mλ', [k$ac0_5, λ]), new MulFormula('$bok$ac0_5$bc$mλ', [$sϑ_Max_Einzelspalt, b_Einzelspalt])],
 	[]
 );
