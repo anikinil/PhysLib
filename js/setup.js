@@ -32,21 +32,14 @@ class MulFormula {
 		this.parentQuantity = parentQuantity;
 		this.subQuantities = subQuantities;
 	}
-	unknownSubQuantities = () => {
-		let count = 0;
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		for (var i in this.subQuantities) {
 			if (this.subQuantities[i].value == undefined) {
-				count++;
+				arr.push(this.subQuantities[i]);
 			}
 		}
-		return count;
-	};
-	getUnknownSubQuantity = () => {
-		for (var i in this.subQuantities) {
-			if (this.subQuantities[i].value == undefined) {
-				return this.subQuantities[i];
-			}
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		this.parentQuantity = eval(this.parentQuantity);
@@ -65,7 +58,7 @@ class MulFormula {
 			}
 			unknownQuantity.value = calc;
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der MulFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der MulFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -75,21 +68,14 @@ class AddFormula {
 		this.parentQuantity = parentQuantity;
 		this.subQuantities = subQuantities;
 	}
-	unknownSubQuantities = () => {
-		let count = 0;
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		for (var i in this.subQuantities) {
 			if (this.subQuantities[i].value == undefined) {
-				count++;
+				arr.push(this.subQuantities[i]);
 			}
 		}
-		return count;
-	};
-	getUnknownSubQuantity = () => {
-		for (var i in this.subQuantities) {
-			if (this.subQuantities[i].value == undefined) {
-				return this.subQuantities[i];
-			}
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -107,7 +93,7 @@ class AddFormula {
 			}
 			unknownQuantity.value = calc;
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der AddFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der AddFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -119,23 +105,15 @@ class DivFormula {
 		this.divisorQuantity = divisorQuantity;
 		this.subQuantities = [dividendQuantity, divisorQuantity];
 	}
-	unknownSubQuantities = () => {
-		let count = 0;
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		if (this.dividendQuantity.value == undefined) {
-			count++;
+			arr.push(this.dividendQuantity);
 		}
 		if (this.divisorQuantity.value == undefined) {
-			count++;
+			arr.push(this.divisorQuantity);
 		}
-		return count;
-	};
-	getUnknownSubQuantity = () => {
-		if (this.dividendQuantity.value == undefined) {
-			return this.dividendQuantity;
-		}
-		if (this.divisorQuantity.value == undefined) {
-			return this.divisorQuantity;
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -145,7 +123,7 @@ class DivFormula {
 		} else if (unknownQuantity == this.divisorQuantity) {
 			unknownQuantity.value = eval(this.dividendQuantity).value / eval(this.parentQuantity).value;
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der DivFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der DivFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -156,22 +134,15 @@ class PowFormula {
 		this.base = base;
 		this.power = power;
 	}
-	unknownSubQuantities = () => {
-		if (this.base.value == undefined && this.power.value == undefined) {
-			return 2;
-		}
-		if (this.base.value == undefined || this.power.value == undefined) {
-			return 1;
-		}
-		return 0;
-	};
-	getUnknownSubQuantity = () => {
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		if (this.base.value == undefined) {
-			return this.base;
+			arr.push(this.base);
 		}
 		if (this.power.value == undefined) {
-			return this.power;
+			arr.push(this.power);
 		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -181,7 +152,7 @@ class PowFormula {
 		} else if (unknownQuantity == this.power) {
 			unknownQuantity.value = Math.log(eval(this.parentQuantity).value) / Math.log(this.base.value);
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der PowFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der PowFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -191,16 +162,12 @@ class SinFormula {
 		this.parentQuantity = parentQuantity;
 		this.input = input;
 	}
-	unknownSubQuantities = () => {
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		if (this.input.value == undefined) {
-			return 1;
+			arr.push(this.input);
 		}
-		return 0;
-	};
-	getUnknownSubQuantity = () => {
-		if (this.input.value == undefined) {
-			return this.input;
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -208,7 +175,7 @@ class SinFormula {
 		} else if (unknownQuantity == this.input) {
 			unknownQuantity.value = Math.asin(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der SinFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der SinFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -218,16 +185,12 @@ class CosFormula {
 		this.parentQuantity = parentQuantity;
 		this.input = input;
 	}
-	unknownSubQuantities = () => {
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		if (this.input.value == undefined) {
-			return 1;
+			arr.push(this.input);
 		}
-		return 0;
-	};
-	getUnknownSubQuantity = () => {
-		if (this.input.value == undefined) {
-			return this.input;
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -235,7 +198,7 @@ class CosFormula {
 		} else if (unknownQuantity == this.input) {
 			unknownQuantity.value = Math.acos(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der CosFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der CosFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }
@@ -245,16 +208,12 @@ class TanFormula {
 		this.parentQuantity = parentQuantity;
 		this.input = input;
 	}
-	unknownSubQuantities = () => {
+	getUnknownSubQuantities = () => {
+		let arr = [];
 		if (this.input.value == undefined) {
-			return 1;
+			arr.push(this.input);
 		}
-		return 0;
-	};
-	getUnknownSubQuantity = () => {
-		if (this.input.value == undefined) {
-			return this.input;
-		}
+		return arr;
 	};
 	calculateAndSetValue = (unknownQuantity) => {
 		if (unknownQuantity == eval(this.parentQuantity)) {
@@ -262,7 +221,7 @@ class TanFormula {
 		} else if (unknownQuantity == this.input) {
 			unknownQuantity.value = Math.atan(eval(this.parentQuantity).value) * (180 / Math.PI);
 		} else {
-			throw new Error('Die angegebene Größe ' + unknownQuantity.name + ' ist nicht in der TanFormula von ' + this.parentQuantity + ' vorhanden.');
+			throw new Error('Die angegebene Größe ' + unknownQuantity.symbol + ' ist nicht in der TanFormula von ' + this.parentQuantity.symbol + ' vorhanden.');
 		}
 	};
 }

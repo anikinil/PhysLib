@@ -2,7 +2,6 @@
 function assignValues(given) {
 	for (var i in given) {
 		given[i].quantity.value = given[i].value;
-		console.log('assigned ' + given[i].quantity.symbol + ' to ' + given[i].quantity.value)
 	}
 }
 
@@ -22,21 +21,26 @@ function assignEquations(equations) {
 function getSolution(given, searched) {
 	for (i = 0; i < given.length; i++) { // for each given
 		if (given[i].value !== undefined) { // if given is defined
-			if (given[i].quantity.parents.length > 0) {// if given has parents
+			if (given[i].quantity.parents.length > 0) { // if given has parents
 				let givenParents = given[i].quantity.parents;
 				for (var j in givenParents) { // for each parent of given
 					let givenParentFormula = givenParents[j].getConnectingFormula();
 					if (eval(givenParentFormula.parentQuantity).value != undefined) { // if the parent is known
-						if (givenParentFormula.unknownSubQuantities() == 1) { // if there is only one unknown subQuantity in the formula
-							let unknownSubQuantity = givenParentFormula.getUnknownSubQuantity();
+						let unknownSubQuantities = givenParentFormula.getUnknownSubQuantities();
+						if (unknownSubQuantities.length == 1) { // if there is only one unknown subQuantity in the formula
+							let unknownSubQuantity = unknownSubQuantities[0];
 							givenParentFormula.calculateAndSetValue(unknownSubQuantity); // calc and set value in quantity
 							givenArr.push(new Given(unknownSubQuantity, unknownSubQuantity.value)); // add new known to givenArr
 							if (unknownSubQuantity == searched && !isNaN(unknownSubQuantity.value)) { // if the calculated quantity is searched
 								return unknownSubQuantity; // return searched subQuantity
 							}
+						} else if (unknownSubQuantities.length == 2) {
+							for (var k in unknownSubQuantities) {
+								console.log('unbekannt: ' + unknownSubQuantities[k].symbol)
+							}
 						}
 					} else { // if the parent is unknown
-						if (givenParentFormula.unknownSubQuantities() == 0) { // if all subQuantities of parentFormula are known
+						if (givenParentFormula.getUnknownSubQuantities().length == 0) { // if all subQuantities of parentFormula are known
 							let unknownParentQuantity = eval(givenParentFormula.parentQuantity);
 							givenParentFormula.calculateAndSetValue(unknownParentQuantity); // calc and set value in quantity
 							givenArr.push(new Given(unknownParentQuantity, unknownParentQuantity.value)); // add new known to givenArr
@@ -50,19 +54,24 @@ function getSolution(given, searched) {
 			if (given[i].quantity.children.length > 0) { // if given has children
 				for (var j in given[i].quantity.children) { // for each formula of given
 					let givenFormula = given[i].quantity.children[j];
-					if (givenFormula.unknownSubQuantities() == 1) { // if givenFormula has only one unknown subQuantity
-						let unknownSubQuantity = givenFormula.getUnknownSubQuantity();
+					let unknownSubQuantities = givenFormula.getUnknownSubQuantities();
+					if (unknownSubQuantities.length == 1) { // if givenFormula has only one unknown subQuantity
+						let unknownSubQuantity = unknownSubQuantities[0];
+						console.log(unknownSubQuantity.symbol);
 						givenFormula.calculateAndSetValue(unknownSubQuantity); // calc and set value in quantity
 						givenArr.push(new Given(unknownSubQuantity, unknownSubQuantity.value)); // add new known to givenArr
 						if (unknownSubQuantity == searched && !isNaN(unknownSubQuantity.value)) { // if the calculated quantity is searched
 							return unknownSubQuantity; // return searched subQuantity
+						}
+					} else if (unknownSubQuantities.length == 2) {
+						for (var k in unknownSubQuantities) {
+							console.log('unbekannt: ' + unknownSubQuantities[k].symbol)
 						}
 					}
 				}
 			}
 		}
 		if (given[i].value === undefined) { // if given is undefined
-
 			if (given[i].quantity.parents.length > 0) { // if given has parents
 				let givenParents = given[i].quantity.parents;
 				for (var j in givenParents) { // for each parent of given
@@ -92,13 +101,11 @@ function getSolution(given, searched) {
 	}
 }
 
-// let givenArr = [new Given(α_1, 27), new Given(α_2, 25), new Given(c_1, 200000000)];
-// let eqtArr = [];
-// let searched = c_2;
 
-let givenArr = [new Given($sα_1, 0.7)];
+let givenArr = [new Given(H, 12), new Given(μ, 30), new Given(B, 30), new Given(t, 10), new Given(α_1, 27), new Given(α_2, 25), new Given(c_1, 200000000)];
 let eqtArr = [];
-let searched = α_1;
+let searched = δ;
+
 
 assignValues(givenArr);
 assignEquations(eqtArr);

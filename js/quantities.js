@@ -100,7 +100,7 @@ let cq_e = new Quantity(
 
 let cc_0 = new Quantity(
     'cc_0',
-    'Lichtgeschwindigkeit',
+    'Lichtgeschwindigkeit (Vakuum)',
     'm/s',
     299792458,
     [],
