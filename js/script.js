@@ -114,12 +114,12 @@ let prev = givenArr.length;
 let	curr = 0;
 
 function run(given, searched) {
-	if (prev == curr) return 'this problem is gay';
+	if (prev == curr) return 'this problem is unsolveable';
 	prev = given.length;
 
 	let solution = getSolution(given, searched);
 	if (solution === Infinity) {
-		return 'who divided your IQ by zero?';
+		return 'division by zero?';
 	}
 	if (solution !== undefined) {
 		return ('solution: ' + solution.symbol + ' = ' + solution.value + ' ' + solution.unit);
